@@ -24,12 +24,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 
 /**
@@ -733,6 +736,170 @@ public class XML {
         return toJSONObject(new StringReader(string), config);
     }
 
+    /**
+     * Convert a well-formed (but not necessarily valid) XML string into a
+     * JSONObject. Some information may be lost in this transformation because
+     * JSON is a data format and XML is a document format. XML uses elements,
+     * attributes, and content text, while JSON uses unordered collections of
+     * name/value pairs and arrays of values. JSON does not does not like to
+     * distinguish between elements and attributes. Sequences of similar
+     * elements are represented as JSONArrays. Content text may be placed in a
+     * "content" member. Comments, prologs, DTDs, and <pre>{@code
+     * &lt;[ [ ]]>}</pre>
+     * are ignored.
+     * <p>
+     * All values are converted as strings, for 1, 01, 29.0 will not be coerced to
+     * numbers but will instead be the exact value as seen in the XML document.
+     *
+     * @param reader reader input
+     * @param path JSONPointer
+     * @return JSONObject
+     * @throws JSONException
+     * @throws IOException
+     */
+    public static JSONObject toJSONObject(Reader reader, JSONPointer path) throws JSONException, IOException {
+        XMLTokener xmlTokener = new XMLTokener(reader);
+        JSONObject jsonObject = new JSONObject();
+        String[] keyPath = path.toString().substring(1).split("/");
+
+        // current position of the pointer
+        int curPosition = 0;
+        // Determine if the source string still contains characters that next() can consume.
+        while (xmlTokener.more()) {
+            // Limit on the number of characters that may be read while still preserving the mark.
+            xmlTokener.reader.mark(1024);
+            xmlTokener.skipPast("<");
+            String key = xmlTokener.nextToken().toString();
+
+            if (key.equals(keyPath[curPosition])) {
+                if(curPosition == keyPath.length-1){
+                    xmlTokener.reader.reset();
+                    xmlTokener.skipPast("<");
+                    parse(xmlTokener, jsonObject, null, XMLParserConfiguration.ORIGINAL);
+                    return jsonObject;
+                }
+                // increase current position by one
+                curPosition++;
+
+                // check whether the next key path is number
+                if(isNum(keyPath[curPosition])){
+                    xmlTokener.reader.reset();
+                    int p = Integer.valueOf(keyPath[curPosition]);
+                    for(int i = 0; i < p; i++){
+                        Queue<String> q = new LinkedList<>();
+                        xmlTokener.skipPast("<");
+                        String tagName = xmlTokener.nextToken().toString();
+                        q.offer(tagName);
+                        while(!q.isEmpty()){
+                            xmlTokener.skipPast("<");
+                            String newTagName = xmlTokener.nextToken().toString();
+                            if (newTagName.equals("/"))
+                                q.poll();
+                            else
+                                q.offer(newTagName);
+                        }
+                    }
+                    if(curPosition == keyPath.length - 1){
+                        xmlTokener.skipPast("<");
+                        parse(xmlTokener, jsonObject, null, XMLParserConfiguration.ORIGINAL);
+                        return jsonObject;
+                    }else
+                        curPosition++;
+                }
+            }
+        }
+        return jsonObject;
+    }
+
+    /**
+     * isNum() function is used to check whether the input string is a number
+     * @param string
+     * @return
+     */
+    private static boolean isNum(String string){
+        for (int i = 0; i < string.length(); i++){
+            if(!(string.charAt(i) >= '0' && string.charAt(i) <= '9'))
+                return false;
+        }
+        return true;
+    }
+    /***
+     *
+     * @param reader
+     * @param jsonPointer
+     * @param replacement
+     * @return
+     * @throws JSONException
+     */
+    public static JSONObject toJSONObject(Reader reader, JSONPointer jsonPointer, JSONObject replacement)throws JSONException{
+        JSONObject jsonObject = toJSONObject(reader);
+        String[] Key_space_included = jsonPointer.toURIFragment().split("/");
+        String [] keys = new String[Key_space_included.length-1];
+        // After the split, a space will be the first element because there is a "/" at the start of ketPath
+        for(int i = 0; i < keys.length; i++)
+            keys[i] = Key_space_included[i+1];
+        if(keys==null||keys.length==0) return replacement;
+//        JSONObject curr = jsonObject;
+//        for (int i=0; i<keys.length-1;i++){
+//
+//        }
+        Object replaced_object = replace(keys, jsonObject, replacement);
+        return (JSONObject) replaced_object;
+    }
+    /**
+     * Replace the target object with the new one
+     * @param keyPath
+     * @param object
+     * @param myObject
+     * @return
+     */
+    private static Object replace(String[] keyPath, Object object, JSONObject myObject){
+        if(object instanceof JSONObject){
+            // reach the target
+            if(keyPath.length == 0)
+                return myObject;
+            else{
+                JSONObject curObject = (JSONObject) object;
+                // Get the outermost object
+                Object tempObject = curObject.get(keyPath[0]);
+
+                // if we have not reached the target, update the key path and recall the replace() function
+                String[] newKeyPath = new String[keyPath.length-1];
+                for(int i = 0; i < keyPath.length -1; i++){
+                    newKeyPath[i] = keyPath[i+1];
+                }
+                Object newObject = replace(newKeyPath,tempObject,myObject);
+
+                // update the curObject
+                curObject.put(keyPath[0], newObject);
+                return (Object) curObject;
+            }
+        }
+        else if(object instanceof JSONArray){
+            if(keyPath.length == 0)
+                return myObject;
+            else{
+                JSONArray curArray = (JSONArray) object;
+
+                // Get the specific key of the JSONArray
+                Object tempObject = curArray.get(Integer.valueOf(keyPath[0]));
+
+                // if we have not reached the target, update the key path and recall the replace() function
+                String[] newKeyPath = new String[keyPath.length-1];
+                for(int i = 0; i < keyPath.length - 1; i++){
+                    newKeyPath[i] = keyPath[i+1];
+                }
+                Object newObject = replace(newKeyPath,tempObject,myObject);
+
+                // update the curArray
+                curArray.put(Integer.valueOf(keyPath[0]), newObject);
+                return (Object) curArray;
+            }
+        }
+        else{
+            return (Object) myObject;
+        }
+    }
     /**
      * Convert a JSONObject into a well-formed, element-normal XML string.
      *
