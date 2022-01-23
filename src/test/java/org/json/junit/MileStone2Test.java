@@ -1,4 +1,4 @@
-package org.json.junit.data;
+package org.json.junit;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,7 +12,7 @@ import java.io.StringReader;
 
 import static org.junit.Assert.assertEquals;
 
-public class mileStone2Test {
+public class MileStone2Test {
     @Test
     public void handleReadSubObject() {
         String xmlStr ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
