@@ -26,7 +26,7 @@
 
 
 
-* For toJSONObject(Reader reader, JSONPointer path, JSONObject replacement) we tested with "/contact/address/street/" and "/contact/address/nick/" and replace them by "<street>Ave of the Arts</street>\n"
+* For toJSONObject(Reader reader, JSONPointer path, JSONObject replacement) we tested with "/contact/address/street/" and "/contact/address/nick/" and replace them by "''<'street>Ave of the Arts'<''/street>\n"
 * "/contact/address/street/" gives a certain path and should return"{\"contact\":{\"nick\":\"Crista\",\"address\":{\"zipcode\":92614,\"street\":{\"street\":\"Ave of the Arts\"}},\"name\":\"Crista Lopes\"}}".
 * "/contact/address/nick/" gives a nonexistent path and should throw an exception JSONObject[\"nick\"] not found.".
 * Both of them are passed.
