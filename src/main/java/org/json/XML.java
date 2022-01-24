@@ -844,11 +844,8 @@ public class XML {
         // After the split, a space will be the first element because there is a "/" at the start of ketPath
         for(int i = 0; i < keys.length; i++)
             keys[i] = Key_space_included[i+1];
-        if(keys==null||keys.length==0) return replacement;
-//        JSONObject curr = jsonObject;
-//        for (int i=0; i<keys.length-1;i++){
-//
-//        }
+        if(keys==null||keys.length==0)
+            return replacement;
         Object replaced_object = replace(keys, jsonObject, replacement);
         return (JSONObject) replaced_object;
     }
