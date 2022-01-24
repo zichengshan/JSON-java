@@ -3,7 +3,7 @@
 ####Two toJsonObject() methods are added in src/main/java/org.json/XML.java
 1. JSONObject toJSONObject(Reader reader, JSONPointer path) (At 760 Line)
     - Extract smaller sub-objects on a certain key path
-    - Main method: 
+    - Main method:   
       - Traverse the tag names in the xml file according to the path given by JSONPointer until the last one. 
       - Then call the parse() function to write the subobject to the target object.
 2. JSONObject toJSONObject(Reader reader, JSONPointer path, JSONObject replacement) (At 840 Line)
