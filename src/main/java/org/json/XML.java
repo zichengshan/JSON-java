@@ -762,29 +762,34 @@ public class XML {
         JSONObject jsonObject = new JSONObject();
         String[] keyPath = path.toString().substring(1).split("/");
 
-        // current position of the pointer
+        // Current position of the pointer
         int curPosition = 0;
         // Determine if the source string still contains characters that next() can consume.
         while (xmlTokener.more()) {
-            // Limit on the number of characters that may be read while still preserving the mark.
+            // Make a maker over here, when reader.reset() is called, the reader will be back to here
             xmlTokener.reader.mark(1024);
             xmlTokener.skipPast("<");
             String key = xmlTokener.nextToken().toString();
 
             if (key.equals(keyPath[curPosition])) {
                 if(curPosition == keyPath.length-1){
+                    // reader.reset() is called and the reader will be back to the mark place
+                    // In parse() function, it will get xmlTokener.nextToken(), if we skip the following two lines, xmlTokener.nextToken()
+                    // will get the object which is after the target object
                     xmlTokener.reader.reset();
                     xmlTokener.skipPast("<");
                     parse(xmlTokener, jsonObject, null, XMLParserConfiguration.ORIGINAL);
                     return jsonObject;
                 }
-                // increase current position by one
+                //Increase current position by one
                 curPosition++;
 
                 // check whether the next key path is number
                 if(isNum(keyPath[curPosition])){
                     xmlTokener.reader.reset();
                     int p = Integer.valueOf(keyPath[curPosition]);
+                    // Each object in JSONArray, the number of tagName is as same as the number of "/" (<street> </street>)
+                    // Use queue's poll() and offer() to filter out the elements we don't need
                     for(int i = 0; i < p; i++){
                         Queue<String> q = new LinkedList<>();
                         xmlTokener.skipPast("<");
@@ -799,6 +804,7 @@ public class XML {
                                 q.offer(newTagName);
                         }
                     }
+                    // Check one more time, because the next round of checks has already been done
                     if(curPosition == keyPath.length - 1){
                         xmlTokener.skipPast("<");
                         parse(xmlTokener, jsonObject, null, XMLParserConfiguration.ORIGINAL);
@@ -818,7 +824,7 @@ public class XML {
      */
     private static boolean isNum(String string){
         for (int i = 0; i < string.length(); i++){
-            if(!(string.charAt(i) >= '0' && string.charAt(i) <= '9'))
+            if(!Character.isDigit(string.charAt(i)))
                 return false;
         }
         return true;

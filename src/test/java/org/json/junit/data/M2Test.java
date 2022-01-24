@@ -21,7 +21,7 @@ public class M2Test {
                 "</contact>";
 
         try {
-            JSONObject jobj = XML.toJSONObject(new StringReader(xmlString), new JSONPointer("/contact/address/nick/"));
+            JSONObject jobj = XML.toJSONObject(new StringReader(xmlString), new JSONPointer("/contact/address/"));
             System.out.println(jobj);
         } catch (JSONException | IOException e) {
             System.out.println(e);
@@ -29,13 +29,13 @@ public class M2Test {
 
         System.out.println("-----------------------");
 
-//        try {
-//            JSONObject replacement = XML.toJSONObject("<street>Ave of the Arts</street>\n");
-//            System.out.println("Given replacement: " + replacement);
-//            JSONObject jobj = XML.toJSONObject(new StringReader(xmlString), new JSONPointer("/contact/address/street/"), replacement);
-//            System.out.println(jobj);
-//        } catch (JSONException e) {
-//            System.out.println(e);
-//        }
+        try {
+            JSONObject replacement = XML.toJSONObject("<street>Ave of the Arts</street>\n");
+            System.out.println("Given replacement: " + replacement);
+            JSONObject jobj = XML.toJSONObject(new StringReader(xmlString), new JSONPointer("/contact/address/street/"), replacement);
+            System.out.println(jobj);
+        } catch (JSONException e) {
+            System.out.println(e);
+        }
     }
 }
