@@ -1,5 +1,7 @@
 ### Milestone2 Assignment
 
+Group member: Zicheng Shan, Chenxu Wang
+
 ####Two toJsonObject() methods are added in src/main/java/org.json/XML.java
 1. JSONObject toJSONObject(Reader reader, JSONPointer path) (At 760 Line)
     - Extract smaller sub-objects on a certain key path
