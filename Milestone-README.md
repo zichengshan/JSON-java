@@ -35,8 +35,10 @@ Group member: Zicheng Shan, Chenxu Wang
 
 
 
-* Performance comparison: might base on the average running time between in-library and outside
-* Intro to the build script
+* Performance comparison: Based on the average running time between in-library and outside. And their performance is better in library.
+
+
+* The built jar file is in JSON-java/build/libs/.
 
 
 
