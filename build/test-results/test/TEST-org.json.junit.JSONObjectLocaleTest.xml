@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.json.junit.JSONObjectLocaleTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-25T05:29:53" hostname="Chenxus-MacBook-Pro.local" time="0.0">
-  <properties/>
-  <testcase name="jsonObjectByLocaleBean" classname="org.json.junit.JSONObjectLocaleTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
