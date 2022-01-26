@@ -30,6 +30,10 @@ Group member: Zicheng Shan, Chenxu Wang
    
 #### Performance comparison
 * Based on the average running time between in-library and outside. And their performance is better in library.
+* For example, in toJSONObject(Reader reader, JSONPointer path) 
+* file size: 210.4MB
+  numebr of lines: 2855718
+  running time: in-library = 6782250 ns; outside = 4737288375 ns
 
 #### build script
 * The built jar file is in JSON-java/build/libs/.
