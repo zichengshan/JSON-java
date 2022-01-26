@@ -25,6 +25,7 @@ Group member: Zicheng Shan, Chenxu Wang
 * "/contact/address/street/" gives a certain path and should return "{\"street\":\"Ave of Nowhere\"}".
 * "/contact/address/nick/" gives a nonexistent path and should throw an exception "Misshaped element at 200 [character 10 line 9]".
 * Both of them are passed.
+* Also we tested it with a jsonArray and the test case is passed.
 
 
 
