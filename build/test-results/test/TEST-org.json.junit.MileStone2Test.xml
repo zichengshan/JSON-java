@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.json.junit.MileStone2Test" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-25T05:29:53" hostname="Chenxus-MacBook-Pro.local" time="0.001">
+  <properties/>
+  <testcase name="handleWrongReplacement" classname="org.json.junit.MileStone2Test" time="0.001"/>
+  <testcase name="handleReadWrongSub" classname="org.json.junit.MileStone2Test" time="0.0"/>
+  <testcase name="handleReplacement" classname="org.json.junit.MileStone2Test" time="0.0"/>
+  <testcase name="handleReadSubObject" classname="org.json.junit.MileStone2Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

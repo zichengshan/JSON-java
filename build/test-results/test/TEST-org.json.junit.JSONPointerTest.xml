@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.json.junit.JSONPointerTest" tests="33" skipped="0" failures="0" errors="0" timestamp="2022-01-25T05:29:53" hostname="Chenxus-MacBook-Pro.local" time="0.004">
+  <properties/>
+  <testcase name="uriFragmentPercentHandling" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="quotationHandling" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="builderTest" classname="org.json.junit.JSONPointerTest" time="0.001"/>
+  <testcase name="queryByEmptyKeySubObjectValue" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="tokenListIsCopiedInConstructor" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="whitespaceKey" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="optQueryFromJSONArrayUsingPointer" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="emptyPointerToString" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="queryFromJSONObjectUsingPointer" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="arrayIndexQuery" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="uriFragmentNotationRoot" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="queryByEmptyKeySubObjectSubOject" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="stringPropOfArrayFailure" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="objectPropertyQuery" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="emptyPointer" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="syntaxError" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="toURIFragment" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="queryFromJSONArray" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="toStringEscaping" classname="org.json.junit.JSONPointerTest" time="0.001"/>
+  <testcase name="queryByEmptyKey" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="primitiveFailure" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="queryFromJSONArrayUsingPointer" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="slashEscaping" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="queryByEmptyKeySubObject" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="nullToken" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="arrayIndexFailure" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="nullPointer" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="backslashHandling" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="uriFragmentNotation" classname="org.json.junit.JSONPointerTest" time="0.001"/>
+  <testcase name="tildeEscaping" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="optQueryFromJSONObjectUsingPointer" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="queryFromJSONObjectUsingPointer0" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <testcase name="queryFromJSONObject" classname="org.json.junit.JSONPointerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

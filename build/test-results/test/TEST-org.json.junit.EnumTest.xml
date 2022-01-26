@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.json.junit.EnumTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-01-25T05:29:53" hostname="Chenxus-MacBook-Pro.local" time="0.001">
+  <properties/>
+  <testcase name="enumValueToString" classname="org.json.junit.EnumTest" time="0.0"/>
+  <testcase name="enumAPI" classname="org.json.junit.EnumTest" time="0.0"/>
+  <testcase name="enumPut" classname="org.json.junit.EnumTest" time="0.0"/>
+  <testcase name="jsonObjectFromEnumWithNames" classname="org.json.junit.EnumTest" time="0.0"/>
+  <testcase name="wrap" classname="org.json.junit.EnumTest" time="0.0"/>
+  <testcase name="jsonObjectFromEnum" classname="org.json.junit.EnumTest" time="0.001"/>
+  <testcase name="enumToString" classname="org.json.junit.EnumTest" time="0.0"/>
+  <testcase name="verifyEnumConsistency" classname="org.json.junit.EnumTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

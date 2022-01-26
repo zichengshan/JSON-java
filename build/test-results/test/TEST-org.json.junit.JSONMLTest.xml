@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.json.junit.JSONMLTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2022-01-25T05:29:53" hostname="Chenxus-MacBook-Pro.local" time="0.005">
+  <properties/>
+  <testcase name="testToJSONArray_jsonOutput" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="toJSONObjectToJSONArray" classname="org.json.junit.JSONMLTest" time="0.001"/>
+  <testcase name="spaceInTagException" classname="org.json.junit.JSONMLTest" time="0.001"/>
+  <testcase name="invalidBangInTagException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="noCloseEndTagException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="nullXMLException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="toJSONArray" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="nonXMLException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="commentsInXML" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="invalidBangNoCloseInTagException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="testIssue484InfinteLoop1" classname="org.json.junit.JSONMLTest" time="0.001"/>
+  <testcase name="testIssue484InfinteLoop2" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="nullJSONXMLException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="invalidCDATABangInTagException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="emptyXMLException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="invalidSlashInTagException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="testToJSONArray_reversibility" classname="org.json.junit.JSONMLTest" time="0.001"/>
+  <testcase name="emptyJSONXMLException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="noCloseEndBraceException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="emptyTagException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="testToJSONArray_reversibility2" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="testToJSONArray_reversibility3" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="testToJSONObject_reversibility" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <testcase name="noCloseStartTagException" classname="org.json.junit.JSONMLTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

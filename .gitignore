@@ -7,7 +7,6 @@
 /target/
 
 /bin/
-build
 .settings/
 /.gradle/
 /gradle/

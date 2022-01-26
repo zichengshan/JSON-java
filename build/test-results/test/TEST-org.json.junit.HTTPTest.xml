@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.json.junit.HTTPTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-01-25T05:29:53" hostname="Chenxus-MacBook-Pro.local" time="0.001">
+  <properties/>
+  <testcase name="nullHTTPException" classname="org.json.junit.HTTPTest" time="0.001"/>
+  <testcase name="extendedHTTPRequest" classname="org.json.junit.HTTPTest" time="0.0"/>
+  <testcase name="simpleHTTPResponse" classname="org.json.junit.HTTPTest" time="0.0"/>
+  <testcase name="notEnoughHTTPException" classname="org.json.junit.HTTPTest" time="0.0"/>
+  <testcase name="convertHTTPResponseToString" classname="org.json.junit.HTTPTest" time="0.0"/>
+  <testcase name="emptyStringHTTPRequest" classname="org.json.junit.HTTPTest" time="0.0"/>
+  <testcase name="simpleHTTPRequest" classname="org.json.junit.HTTPTest" time="0.0"/>
+  <testcase name="convertHTTPRequestToString" classname="org.json.junit.HTTPTest" time="0.0"/>
+  <testcase name="extendedHTTPResponse" classname="org.json.junit.HTTPTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

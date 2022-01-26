@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.json.junit.XMLConfigurationTest" tests="36" skipped="0" failures="0" errors="0" timestamp="2022-01-25T05:29:53" hostname="Chenxus-MacBook-Pro.local" time="0.009">
+  <properties/>
+  <testcase name="testToJSONArray_jsonOutput" classname="org.json.junit.XMLConfigurationTest" time="0.001"/>
+  <testcase name="shouldHandleNonEmptyArray" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleInvalidCDATABangInTag" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="testContentForceList" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleEmptyMultiArray" classname="org.json.junit.XMLConfigurationTest" time="0.001"/>
+  <testcase name="shouldHandleContentArraytoString" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleContentNoArraytoString" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleNullJSONXML" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="testEmptyTagForceList" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleInvalidSlashInTag" classname="org.json.junit.XMLConfigurationTest" time="0.001"/>
+  <testcase name="shouldHandleArraytoString" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleMultiArray" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleInvalidBangNoCloseInTag" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="testSimpleForceList" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleNullNodeValue" classname="org.json.junit.XMLConfigurationTest" time="0.001"/>
+  <testcase name="testMultipleTagForceList" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="testUnescape" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleNonXML" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleNoStartTag" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleEmptyXML" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleNestedArraytoString" classname="org.json.junit.XMLConfigurationTest" time="0.001"/>
+  <testcase name="testToJSONArray_reversibility" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleEmptyJSONXML" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="testConfig" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="contentOperations" classname="org.json.junit.XMLConfigurationTest" time="0.001"/>
+  <testcase name="shouldHandleNullXML" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleEmptyArray" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleCommentsInXML" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleInvalidBangInTag" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleNoCloseStartTag" classname="org.json.junit.XMLConfigurationTest" time="0.001"/>
+  <testcase name="shouldHandleSimpleXML" classname="org.json.junit.XMLConfigurationTest" time="0.001"/>
+  <testcase name="testToJsonXML" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleIllegalJSONNodeNames" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="shouldHandleToString" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="testLongForceList" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <testcase name="testEmptyForceList" classname="org.json.junit.XMLConfigurationTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
