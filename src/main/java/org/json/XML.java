@@ -910,7 +910,7 @@ public class XML {
      * This function is for transformations of keys
      * @return A JSONObject containing the structured data from the XML string.
      */
-    public static JSONObject toJSONObjectTest(Reader reader, Function<String,String> func) throws JSONException {
+    public static JSONObject toJSONObject(Reader reader, Function<String,String> func) throws JSONException {
         JSONObject jo = new JSONObject();
         XMLTokener x = new XMLTokener(reader);
         while (x.more()) {

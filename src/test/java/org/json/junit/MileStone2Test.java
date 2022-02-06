@@ -167,11 +167,11 @@ public class MileStone2Test {
                 "</contact>";
         try {
             Reader reader = new StringReader(xmlStr);
-            JSONObject jo = XML.toJSONObjectTest(reader, s -> "SWE262_" + s);
+            JSONObject jo = XML.toJSONObject(reader, s -> "SWE262_" + s);
             reader.close();
             assertEquals("Correct result.","{\"SWE262_contact\":{\"SWE262_name\":\"Crista Lopes\",\"SWE262_nick\":\"Crista\",\"SWE262_address\":{\"SWE262_street\":\"Ave of Nowhere\",\"SWE262_zipcode\":92614}}}",
                     jo.toString());
-            System.out.println(jo.toString());
+            System.out.println(jo.toString(4));
         }
             catch (IOException e){
             System.out.println("Caught a IO Exception ");
@@ -215,11 +215,11 @@ public class MileStone2Test {
                 "</catalog>";
         try {
             Reader reader = new StringReader(xmlStr);
-            JSONObject jo = XML.toJSONObjectTest(reader, s -> "SWE262_" + s);
+            JSONObject jo = XML.toJSONObject(reader, s -> "SWE262_" + s);
             reader.close();
             assertEquals("Correct result.","{\"SWE262_contact\":{\"SWE262_name\":\"Crista Lopes\",\"SWE262_nick\":\"Crista\",\"SWE262_address\":{\"SWE262_street\":\"Ave of Nowhere\",\"SWE262_zipcode\":92614}}}",
                     jo.toString());
-            System.out.println(jo.toString());
+            System.out.println(jo.toString(4));
         }
         catch (IOException e){
             System.out.println("Caught a IO Exception ");

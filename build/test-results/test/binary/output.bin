@@ -1,0 +1,8 @@
+{"SWE262_contact": {
+#    "SWE262_name": "Crista Lopes",
+    "SWE262_nick": "Crista",
+    "SWE262_address": {
++        "SWE262_street": "Ave of Nowhere",
+         "SWE262_zipcode": 92614
+    }
+}}
