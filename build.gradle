@@ -33,7 +33,7 @@ subprojects {
 group = 'org.json'
 version = 'v20200429-SNAPSHOT'
 description = 'JSON in Java'
-sourceCompatibility = '1.7'
+sourceCompatibility = "1.8"
 
 configurations.all {
 }
@@ -54,3 +54,4 @@ publishing {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+targetCompatibility = JavaVersion.VERSION_1_8

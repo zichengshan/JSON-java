@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.json.junit.MileStone2Test" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-01-26T03:06:37" hostname="Chenxus-MacBook-Pro.local" time="0.005">
+<testsuite name="org.json.junit.MileStone2Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-06T21:00:02" hostname="Chenxus-MacBook-Pro.local" time="0.004">
   <properties/>
-  <testcase name="handleReadArraySubObject" classname="org.json.junit.MileStone2Test" time="0.004"/>
-  <testcase name="handleWrongReplacement" classname="org.json.junit.MileStone2Test" time="0.001"/>
-  <testcase name="handleReadWrongSub" classname="org.json.junit.MileStone2Test" time="0.0"/>
-  <testcase name="handleReplacement" classname="org.json.junit.MileStone2Test" time="0.0"/>
-  <testcase name="handleReadSubObject" classname="org.json.junit.MileStone2Test" time="0.0"/>
+  <testcase name="handleTransformation" classname="org.json.junit.MileStone2Test" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

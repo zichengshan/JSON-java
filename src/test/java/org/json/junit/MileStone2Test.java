@@ -154,4 +154,27 @@ public class MileStone2Test {
             e.printStackTrace();
         }
     }
+    @Test
+    public void handleTransformation(){
+        String xmlStr ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
+                "<contact>\n"+
+                "  <nick>Crista </nick>\n"+
+                "  <name>Crista Lopes</name>\n" +
+                "  <address>\n" +
+                "    <street>Ave of Nowhere</street>\n" +
+                "    <zipcode>92614</zipcode>\n" +
+                "  </address>\n" +
+                "</contact>";
+        try {
+            Reader reader = new StringReader(xmlStr);
+            JSONObject jo = XML.toJSONObjectTest(reader, s -> "SWE262_" + s);
+            reader.close();
+            assertEquals("Correct result.","{\"SWE262_contact\":{\"SWE262_name\":\"Crista Lopes\",\"SWE262_nick\":\"Crista\",\"SWE262_address\":{\"SWE262_street\":\"Ave of Nowhere\",\"SWE262_zipcode\":92614}}}",
+                    jo.toString());
+        }
+            catch (IOException e){
+            System.out.println("Caught a IO Exception ");
+            e.printStackTrace();
+        }
+    }
 }
