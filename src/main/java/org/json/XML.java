@@ -922,6 +922,17 @@ public class XML {
         return jo;
     }
 
+    /**
+     *
+     * @param x
+     * @param context
+     * @param name
+     * @param config original config
+     * @param func transform key
+     * @return
+     * @throws JSONException
+     */
+
     private static boolean parse(XMLTokener x, JSONObject context, String name, XMLParserConfiguration config, Function<String,String> func)
             throws JSONException {
         char c;
@@ -1049,6 +1060,16 @@ public class XML {
                     if (x.nextToken() != GT) {
                         throw x.syntaxError("Misshaped tag");
                     }
+                    if (config.getForceList().contains(tagName)) {
+                        // Force the value to be an array
+                        if (nilAttributeFound) {
+                            context.append(func.apply(tagName), JSONObject.NULL);
+                        } else if (jsonObject.length() > 0) {
+                            context.append(func.apply(tagName), jsonObject);
+                        } else {
+                            context.put(func.apply(tagName), new JSONArray());
+                        }
+                    } else {
                         if (nilAttributeFound) {
                             context.accumulate(func.apply(tagName), JSONObject.NULL);
                         } else if (jsonObject.length() > 0) {
@@ -1056,6 +1077,7 @@ public class XML {
                         } else {
                             context.accumulate(func.apply(tagName), "");
                         }
+                    }
                     return false;
 
                 } else if (token == GT) {
@@ -1082,6 +1104,17 @@ public class XML {
                         } else if (token == LT) {
                             // Nested element
                             if (parse(x, jsonObject, tagName, config, func)) {
+                                if (config.getForceList().contains(tagName)) {
+                                    // Force the value to be an array
+                                    if (jsonObject.length() == 0) {
+                                        context.put(func.apply(tagName), new JSONArray());
+                                    } else if (jsonObject.length() == 1
+                                            && jsonObject.opt(config.getcDataTagName()) != null) {
+                                        context.append(func.apply(tagName), jsonObject.opt(config.getcDataTagName()));
+                                    } else {
+                                        context.append(func.apply(tagName), jsonObject);
+                                    }
+                                } else {
                                     if (jsonObject.length() == 0) {
                                         context.accumulate(func.apply(tagName), "");
                                     } else if (jsonObject.length() == 1
@@ -1090,7 +1123,9 @@ public class XML {
                                     } else {
                                         context.accumulate(func.apply(tagName), jsonObject);
                                     }
-                                return false;
+                                }
+                                    return false;
+//                                }
                             }
                         }
                     }
