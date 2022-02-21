@@ -1,8 +1,6 @@
 package org.json.junit;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.Node;
 import org.json.XML;
 import org.junit.Test;
 
@@ -14,31 +12,30 @@ import static org.junit.Assert.assertEquals;
 
 public class MileStone4Test {
     @Test
-    public void streamTestPrint(){
-        String xml ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
-                "<contact>\n"+
-                "  <nick>Crista </nick>\n"+
+    public void streamTestPrint() {
+        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<contact>\n" +
+                "  <nick>Crista </nick>\n" +
                 "  <name>Crista Lopes</name>\n" +
                 "  <address>\n" +
                 "    <street>Ave of Nowhere</street>\n" +
                 "    <zipcode>92614</zipcode>\n" +
                 "  </address>\n" +
                 "</contact>";
-        String xml1 ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
-                "<nick>Crista </nick>\n"
-                ;
-        String xml2 ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
+
+        String xml1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<nick>Crista </nick>\n";
+        String xml2 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "  <address>\n" +
                 "    <street>Ave of Nowhere</street>\n" +
                 "    <zipcode>92614</zipcode>\n" +
                 "  </address>\n";
-        String xml3 ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
+        String xml3 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<zipcode>92614</zipcode>\n";
-        String xml4 ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
+        String xml4 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<street>Ave of Nowhere</street>\n";
-        String xml5 ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
+        String xml5 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<name>Crista Lopes</name>\n";
-
 
         JSONObject[] xmlArray = {XML.toJSONObject(xml),
                 XML.toJSONObject(xml1),
@@ -51,27 +48,27 @@ public class MileStone4Test {
                 XML.toJSONObject(xml);
         Stream<JSONObject> stream = jsonObject.toStream();
         List<JSONObject> l = stream.collect(Collectors.toList());
-        int i =0;
-        for (JSONObject node : l){
+        int i = 0;
+        for (JSONObject node : l) {
             assertEquals(node.toString(), xmlArray[i].toString());
             i++;
         }
     }
+
     @Test
-    public void streamTestfilter(){
-        String xml ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
-                "<contact>\n"+
-                "  <nick>Crista </nick>\n"+
+    public void streamTestfilter() {
+        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<contact>\n" +
+                "  <nick>Crista </nick>\n" +
                 "  <name>Crista Lopes</name>\n" +
                 "  <address>\n" +
                 "    <street>Ave of Nowhere</street>\n" +
                 "    <zipcode>92614</zipcode>\n" +
                 "  </address>\n" +
-                "</contact>"
-                ;
+                "</contact>";
 
 
-        String xml1 ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
+        String xml1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<zipcode>92614</zipcode>\n";
 
 
@@ -83,24 +80,24 @@ public class MileStone4Test {
         Stream<JSONObject> stream = jsonObject.toStream();
         int i = 0;
         List<JSONObject> l = stream.filter(node -> node.has("zipcode")).collect(Collectors.toList());
-        for(JSONObject j : l){
-            assertEquals(xmlArray[i].toString(),j.toString());
+        for (JSONObject j : l) {
+            assertEquals(xmlArray[i].toString(), j.toString());
             i++;
         }
     }
+
     @Test
-    public void streamGetKey(){
-        String xml ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
-                "<contact>\n"+
-                "  <nick>Crista </nick>\n"+
+    public void streamGetKey() {
+        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<contact>\n" +
+                "  <nick>Crista </nick>\n" +
                 "  <name>Crista Lopes</name>\n" +
                 "  <address>\n" +
                 "    <street>Ave of Nowhere</street>\n" +
                 "    <zipcode>92614</zipcode>\n" +
                 "  </address>\n" +
-                "</contact>"
-                ;
-        List<Set<String>> expect= new ArrayList<>();
+                "</contact>";
+        List<Set<String>> expect = new ArrayList<>();
         Set<String> set1 = new HashSet<>(Arrays.asList("contact"));
         Set<String> set2 = new HashSet<>(Arrays.asList("nick"));
         Set<String> set3 = new HashSet<>(Arrays.asList("address"));
@@ -117,9 +114,9 @@ public class MileStone4Test {
                 XML.toJSONObject(xml);
         Stream<JSONObject> stream = jsonObject.toStream();
         int i = 0;
-        List<Set<String>> l = stream.map(node->node.keySet()).collect(Collectors.toList());
-        for(Set<String> s : l){
-            assertEquals(expect.get(i),s);
+        List<Set<String>> l = stream.map(node -> node.keySet()).collect(Collectors.toList());
+        for (Set<String> s : l) {
+            assertEquals(expect.get(i), s);
             i++;
         }
     }
