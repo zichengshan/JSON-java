@@ -1,16 +1,11 @@
 package org.json.junit;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.Node;
 import org.json.XML;
 import org.junit.Test;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import static org.junit.Assert.assertEquals;
 
 public class MileStone4Test {
     @Test
@@ -28,14 +23,8 @@ public class MileStone4Test {
                 XML.toJSONObject(xml);
         Stream<JSONObject> stream = jsonObject.toStream();
         List<JSONObject> l = stream.collect(Collectors.toList());
-        int i =0;
         for (JSONObject node : l){
-            System.out.println(i);
             System.out.println(node.toString());
-            i++;
         }
-//        int i=0;
-//        List<JSONObject> list = stream.collect(Collectors.toList());
-//        assertEquals("{\"author\":\"Kress Peter\"}",list.get(0).toString());
     }
 }
