@@ -1,14 +1,14 @@
 0
-qnull : {"contact":{"nick":"Crista","address":{"zipcode":92614,"street":"Ave of Nowhere"},"name":"Crista Lopes"}}
+j{"contact":{"nick":"Crista","address":{"zipcode":92614,"street":"Ave of Nowhere"},"name":"Crista Lopes"}}
 1
-hcontact : {"nick":"Crista","address":{"zipcode":92614,"street":"Ave of Nowhere"},"name":"Crista Lopes"}
+^{"nick":"Crista","address":{"zipcode":92614,"street":"Ave of Nowhere"},"name":"Crista Lopes"}
 2
-nick : Crista
+{"nick":"Crista"}
 3
-6address : {"zipcode":92614,"street":"Ave of Nowhere"}
+,{"zipcode":92614,"street":"Ave of Nowhere"}
 4
-zipcode : 92614
+{"zipcode":92614}
 5
-street : Ave of Nowhere
+{"street":"Ave of Nowhere"}
 6
-name : Crista Lopes
+{"name":"Crista Lopes"}

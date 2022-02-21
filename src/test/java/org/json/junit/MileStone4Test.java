@@ -26,27 +26,12 @@ public class MileStone4Test {
                 "</contact>";
         JSONObject jsonObject =
                 XML.toJSONObject(xml);
-        Stream<Node> stream = jsonObject.toStream();
-        List<Node> l = stream.collect(Collectors.toList());
+        Stream<JSONObject> stream = jsonObject.toStream();
+        List<JSONObject> l = stream.collect(Collectors.toList());
         int i =0;
-        for (Node node : l){
+        for (JSONObject node : l){
             System.out.println(i);
-            if(node.getData() instanceof JSONObject) {
-                System.out.print(node.getKey()+" : ");
-                System.out.println(((JSONObject) node.getData()).toString());
-            }
-            else if(node.getData() instanceof JSONArray) {
-                for(int j= 0;j< ((JSONArray) node.getData()).length(); j++){
-                    System.out.print(node.getKey()+" : ");
-                    System.out.println(((Object)((JSONArray) node.getData()).get(j)).toString());
-                }
-
-            }
-            else {
-                System.out.print(node.getKey()+" : ");
-                System.out.println(node.getData().toString());
-            }
-
+            System.out.println(node.toString());
             i++;
         }
 //        int i=0;

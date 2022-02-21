@@ -38,6 +38,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.function.Consumer;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -496,70 +497,64 @@ public class JSONObject {
         }
         return this;
     }
-    public static Node createJSONTree(Object nodeData) {
-        Node node = new Node(nodeData);
-
-        if (nodeData == null) {
-            return node;
-        }
-
-        List<Node> childrenList = new LinkedList<>();
-
-        if (nodeData instanceof JSONObject) {
-            JSONObject jsonObject = (JSONObject) nodeData;
-            Set<String> keySet = jsonObject.keySet();
-            for (String key : keySet) {
-                Node childNode = createJSONTree(jsonObject.get(key));
-                childNode.setKey(key);
-                childrenList.add(childNode);
-            }
-            node.addChildren(childrenList);
-        } else if (nodeData instanceof JSONArray) {
-            JSONArray jsonArray = (JSONArray) nodeData;
-            for (int index = 0, size = jsonArray.length(); index < size; index++) {
-                Node childNode = createJSONTree(jsonArray.get(index));
-                if (childNode.getChildren() != null) {
-                    childrenList.addAll(childNode.getChildren());
-                }
-            }
-            node.addChildren(childrenList);
-        } else {
-            node.addChild(null);
-        }
-        return node;
-    }
-    /**
-     *
-     *
-     * @return
-     */
-
-    public Stream<Node> toStream(){
-//        Node node = new Node(this);
-//        Set<Entry<String, Object>> entrySet = this.entrySet();
-//        for(Entry<String, Object> e:entrySet){
-//            fillStream(e.getKey(),e.getValue(),node);
-//        }
-        Node root = this.createJSONTree(this);
-        return root.stream();
+    public Stream<JSONObject> toStream() {
+        return StreamSupport.stream(this.spliterator(), false);
     }
 
-    private void fillStream(String key, Object o,Node node ){
-        Node newNode = node;
-        if(o instanceof JSONObject){
-            for(Entry<String, Object> e:((JSONObject) o).map.entrySet()){
-                fillStream(e.getKey(),e.getValue(),newNode);
+    public Spliterator<JSONObject> spliterator() {
+        return new NodeSpliterator(this);
+    }
+    class NodeSpliterator implements Spliterator<JSONObject> {
+
+        private final JSONObject root;
+        private JSONObject tree;
+
+        NodeSpliterator(JSONObject t) {
+            root = tree = t;
+        }
+
+        @Override
+        public int characteristics() {
+            return Spliterator.DISTINCT | Spliterator.IMMUTABLE | Spliterator.NONNULL;
+        }
+
+        @Override
+        public long estimateSize() {
+            return Long.MAX_VALUE;
+        }
+
+
+
+        @Override
+        public boolean tryAdvance(Consumer<? super JSONObject> action) {
+            JSONObject current = tree;
+                action.accept(current);
+                Set<Entry<String,Object>> child = ((JSONObject) tree).entrySet();
+                for(Entry<String, Object> e:child){
+                    if(e.getValue() instanceof JSONObject) {
+                        tree = (JSONObject) e.getValue();
+                        tryAdvance(action);
+                    }
+                    else if(!( e.getValue() instanceof JSONArray)){
+                        JSONObject newObj =new JSONObject();
+                        newObj.put(e.getKey(),e.getValue());
+                        action.accept(newObj);
+                    }
+
             }
-        }else if (o instanceof  JSONArray){
-            for(int i=0; i<((JSONArray) o).length();i++){
-                fillStream(key,((JSONArray) o).get(i),newNode);
-            }
-        }else {
-            JSONObject newObj = new JSONObject();
-            newObj.put(key,o);
-            newNode.addChild(newObj);
+            tree = current;
+            if (tree == root)
+                return false;
+            else
+                return true;
+        }
+
+        @Override
+        public Spliterator<JSONObject> trySplit() {
+            return null;
         }
     }
+
     /**
      * Append values to the array under a key. If the key does not exist in the
      * JSONObject, then the key is put in the JSONObject with its value being a
