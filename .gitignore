@@ -5,6 +5,7 @@
 .idea
 *.iml
 /target/
+.DS_Store
 
 /bin/
 .settings/
@@ -13,12 +14,13 @@
 /gradlew
 /gradlew.bat
 .gitmodules
-/build/classes/
-/build/docs/
-/build/generated/
-/build/reports/
-/build/resources/
-/build/tmp/
-/build/test-results/
-/build/reports/
+#/build/classes/
+#/build/docs/
+#/build/generated/
+#/build/reports/
+#/build/resources/
+#/build/tmp/
+#/build/test-results/
+#/build/reports/
 
+/build/tmp/
