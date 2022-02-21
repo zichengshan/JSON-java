@@ -36,18 +36,11 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.ResourceBundle;
-import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * A JSONObject is an unordered collection of name/value pairs. Its external
@@ -503,7 +496,70 @@ public class JSONObject {
         }
         return this;
     }
+    public static Node createJSONTree(Object nodeData) {
+        Node node = new Node(nodeData);
 
+        if (nodeData == null) {
+            return node;
+        }
+
+        List<Node> childrenList = new LinkedList<>();
+
+        if (nodeData instanceof JSONObject) {
+            JSONObject jsonObject = (JSONObject) nodeData;
+            Set<String> keySet = jsonObject.keySet();
+            for (String key : keySet) {
+                Node childNode = createJSONTree(jsonObject.get(key));
+                childNode.setKey(key);
+                childrenList.add(childNode);
+            }
+            node.addChildren(childrenList);
+        } else if (nodeData instanceof JSONArray) {
+            JSONArray jsonArray = (JSONArray) nodeData;
+            for (int index = 0, size = jsonArray.length(); index < size; index++) {
+                Node childNode = createJSONTree(jsonArray.get(index));
+                if (childNode.getChildren() != null) {
+                    childrenList.addAll(childNode.getChildren());
+                }
+            }
+            node.addChildren(childrenList);
+        } else {
+            node.addChild(null);
+        }
+        return node;
+    }
+    /**
+     *
+     *
+     * @return
+     */
+
+    public Stream<Node> toStream(){
+//        Node node = new Node(this);
+//        Set<Entry<String, Object>> entrySet = this.entrySet();
+//        for(Entry<String, Object> e:entrySet){
+//            fillStream(e.getKey(),e.getValue(),node);
+//        }
+        Node root = this.createJSONTree(this);
+        return root.stream();
+    }
+
+    private void fillStream(String key, Object o,Node node ){
+        Node newNode = node;
+        if(o instanceof JSONObject){
+            for(Entry<String, Object> e:((JSONObject) o).map.entrySet()){
+                fillStream(e.getKey(),e.getValue(),newNode);
+            }
+        }else if (o instanceof  JSONArray){
+            for(int i=0; i<((JSONArray) o).length();i++){
+                fillStream(key,((JSONArray) o).get(i),newNode);
+            }
+        }else {
+            JSONObject newObj = new JSONObject();
+            newObj.put(key,o);
+            newNode.addChild(newObj);
+        }
+    }
     /**
      * Append values to the array under a key. If the key does not exist in the
      * JSONObject, then the key is put in the JSONObject with its value being a
