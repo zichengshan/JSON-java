@@ -1297,6 +1297,8 @@ public class XML {
      * http://tutorials.jenkov.com/java-util-concurrent/java-future.html
      */
 
+    // Due to Runnable, we can’t return anything in the run() method.
+    // In the case where we want to return some objects, we need to do something else — use Callable.
     static class Thread implements Callable<JSONObject>{
         Reader reader;
         public Thread(Reader reader){
@@ -1311,7 +1313,7 @@ public class XML {
     public static Future<JSONObject> toJSONObjectMS5(Reader reader) {
         // Creates a thread pool that creates new threads as needed but will reuse previously constructed threads when they are available.
         ExecutorService executorService = Executors.newCachedThreadPool();
-        // initialize a thread
+        // Initialize a thread
         Callable<JSONObject> callable = new Thread(reader);
         // Future, represents the result of an asynchronous computation
         // Submits a value-returning task for execution and returns a Future representing the pending results of the task
