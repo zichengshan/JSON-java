@@ -24,6 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+import jdk.vm.ci.code.site.Call;
+import org.graalvm.compiler.core.common.util.TypeReader;
+
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
@@ -33,6 +37,7 @@ import java.math.BigInteger;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.*;
 import java.util.function.Function;
 
 
@@ -1289,4 +1294,44 @@ public class XML {
         }
         return jsonObject;
     }
+
+    /**
+     * MileStone5
+     * Reference:
+     * https://medium.com/geekculture/use-futuretask-and-callable-with-multithreading-to-boost-your-java-application-performance-47a8fc6cf8a5
+     * http://tutorials.jenkov.com/java-util-concurrent/java-future.html
+     */
+
+    static class Thread implements Callable<JSONObject>{
+        Reader reader;
+        public Thread(Reader reader){
+            this.reader = reader;
+        }
+        @Override
+        public JSONObject call() throws Exception {
+            return toJSONObject(reader);
+        }
+    }
+
+    public static Future<JSONObject> toJSONObjectMileS5(Reader reader, Boolean distinguish) throws ExecutionException, InterruptedException {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        Callable<JSONObject> callable = new Thread(reader);
+        Future<JSONObject> future = executorService.submit(callable);
+        executorService.shutdown();
+        return future;
+
+        // FutureTask is an implementation class which implements RunnableFuture interface, which extends Runnable interface.
+//        FutureTask<JSONObject> futureTask = new FutureTask<JSONObject>(callable);
+//        new Thread(futureTask).start();
+//        return new FutureTask<>(callable);
+    }
+    public static JSONObject toJSONObjectMileS5test(Reader reader, Boolean distinguish) throws ExecutionException, InterruptedException {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        Callable<JSONObject> callable = new Thread(reader);
+        Future<JSONObject> future = executorService.submit(callable);
+        executorService.shutdown();
+        return future.get();
+    }
+
+
 }
