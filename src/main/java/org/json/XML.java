@@ -24,14 +24,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import jdk.vm.ci.code.site.Call;
-import org.graalvm.compiler.core.common.util.TypeReader;
-
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
-import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Iterator;
@@ -1313,25 +1308,15 @@ public class XML {
         }
     }
 
-    public static Future<JSONObject> toJSONObjectMileS5(Reader reader, Boolean distinguish) throws ExecutionException, InterruptedException {
+    public static Future<JSONObject> toJSONObjectMS5(Reader reader) {
+        // Creates a thread pool that creates new threads as needed but will reuse previously constructed threads when they are available.
         ExecutorService executorService = Executors.newCachedThreadPool();
+        // initialize a thread
         Callable<JSONObject> callable = new Thread(reader);
+        // Future, represents the result of an asynchronous computation
+        // Submits a value-returning task for execution and returns a Future representing the pending results of the task
         Future<JSONObject> future = executorService.submit(callable);
         executorService.shutdown();
         return future;
-
-        // FutureTask is an implementation class which implements RunnableFuture interface, which extends Runnable interface.
-//        FutureTask<JSONObject> futureTask = new FutureTask<JSONObject>(callable);
-//        new Thread(futureTask).start();
-//        return new FutureTask<>(callable);
     }
-    public static JSONObject toJSONObjectMileS5test(Reader reader, Boolean distinguish) throws ExecutionException, InterruptedException {
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        Callable<JSONObject> callable = new Thread(reader);
-        Future<JSONObject> future = executorService.submit(callable);
-        executorService.shutdown();
-        return future.get();
-    }
-
-
 }
