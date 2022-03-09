@@ -33,6 +33,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 
@@ -1291,34 +1292,49 @@ public class XML {
     }
 
     /**
-     * MileStone5
+     * MileStone5 New
      * Reference:
      * https://medium.com/geekculture/use-futuretask-and-callable-with-multithreading-to-boost-your-java-application-performance-47a8fc6cf8a5
      * http://tutorials.jenkov.com/java-util-concurrent/java-future.html
+     * https://www.jianshu.com/p/cc1169e2bb3c
      */
 
     // Due to Runnable, we can’t return anything in the run() method.
     // In the case where we want to return some objects, we need to do something else — use Callable.
     static class Thread implements Callable<JSONObject>{
         Reader reader;
-        public Thread(Reader reader){
+        Function<String, String> f;
+        public Thread(Reader reader, Function<String, String> f){
             this.reader = reader;
+            this.f = f;
         }
         @Override
         public JSONObject call() throws Exception {
-            return toJSONObject(reader);
+            System.out.println("Processing.....");
+            // this toJSONObject() method is created in MileStone3
+            return toJSONObject(reader, f);
         }
     }
 
-    public static Future<JSONObject> toJSONObjectMS5(Reader reader) {
+    public static Future<JSONObject> toJSONObjectMS5(Reader reader, Function<String, String> f, Consumer<Exception> c) {
         // Creates a thread pool that creates new threads as needed but will reuse previously constructed threads when they are available.
         ExecutorService executorService = Executors.newCachedThreadPool();
         // Initialize a thread
-        Callable<JSONObject> callable = new Thread(reader);
-        // Future, represents the result of an asynchronous computation
-        // Submits a value-returning task for execution and returns a Future representing the pending results of the task
-        Future<JSONObject> future = executorService.submit(callable);
-        executorService.shutdown();
+        Callable<JSONObject> callable = new Thread(reader, f);
+        Future<JSONObject> future = null;
+
+        try {
+            if(f == null)
+                throw new Exception();
+            // Future, represents the result of an asynchronous computation
+            // Submits a value-returning task for execution and returns a Future representing the pending results of the task
+            future = executorService.submit(callable);
+            executorService.shutdown();
+
+        } catch (Exception e) {
+            // accept() is used to perform custom operations on the input parameters
+            c.accept(e);
+        }
         return future;
     }
 }

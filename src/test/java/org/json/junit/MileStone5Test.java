@@ -3,64 +3,61 @@ package org.json.junit;
 import org.json.JSONObject;
 import org.json.XML;
 import org.junit.Test;
-import java.io.Reader;
-import java.io.StringReader;
+import static org.junit.Assert.*;
+import java.io.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class MileStone5Test {
-    private String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-            "<contact>\n" +
-            "  <nick>Crista </nick>\n" +
+    /**
+     * Test on "Future<JSONObject> toJSONObjectMS5(Reader reader, Function<String, String> f, Consumer<Exception> c)"
+     * Test whether the function can handle with XML successfully and return the correct output
+     */
+
+    String xml ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
+            "<contact>\n"+
+            "  <nick>Crista </nick>\n"+
             "  <name>Crista Lopes</name>\n" +
             "  <address>\n" +
             "    <street>Ave of Nowhere</street>\n" +
             "    <zipcode>92614</zipcode>\n" +
             "  </address>\n" +
             "</contact>";
-    private String result = "{\"contact\":{\"nick\":\"Crista\",\"address\":{\"zipcode\":92614,\"street\":\"Ave of Nowhere\"},\"name\":\"Crista Lopes\"}}";
 
-    /**
-     * Test whether the function can handle with XML successfully.
-     * @throws ExecutionException
-     * @throws InterruptedException
-     */
+    String expect = "{\"SWE262_contact\":{\"SWE262_name\":\"Crista Lopes\",\"SWE262_nick\":\"Crista\",\"SWE262_address\":{\"SWE262_street\":\"Ave of Nowhere\",\"SWE262_zipcode\":92614}}}";
+
     @Test
-    public void testSuccess() throws ExecutionException, InterruptedException {
+    public void testSuccess(){
+        try {
+            Reader reader = new StringReader(xml);
+            Function<String, String> f = (key) -> "SWE262_" + key;
+            Consumer<Exception> c = (e) -> e.printStackTrace();
 
-        Reader reader = new StringReader(xml);
+            // call the method to get future
+            Future<JSONObject> future = XML.toJSONObjectMS5(reader, f, c);
+            JSONObject current = future.get();
 
-        Future<JSONObject> future = XML.toJSONObjectMS5(reader);
-        JSONObject obj = null;
-        try{
-            obj = future.get();
-            assertEquals(obj.toString(),result);
-        }catch (InterruptedException e) {
-            System.out.println("InterruptedException");
-            e.printStackTrace();
+            // check equals
+            assertEquals(current.toString(), expect);
+
         } catch (ExecutionException e) {
-            System.out.println("ExecutionException");
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * Test whether the function can handle with exception.
-     * @throws InterruptedException
-     * @throws ExecutionException
+     * Test on "Future<JSONObject> toJSONObjectMS5(Reader reader, Function<String, String> k, Consumer<Exception> c)"
+     * Test the exception occasion, expect print "No input function!" and future return NULL
      */
-    @Test(expected=ExecutionException.class)
-    public void shouldThrowExecutionException() throws InterruptedException, ExecutionException {
-        String str = "<contact";
-        Reader reader = new StringReader(str);
-        Future<JSONObject> futureJSONObject = XML.toJSONObjectMS5(reader);
-        while (!futureJSONObject.isDone()) {
-            Thread.sleep(1000);
-        }
-        JSONObject jo = futureJSONObject.get();
-        assertTrue("The Json would be empty because of exception", jo.isEmpty());
+    @Test
+    public void shouldThrowExecutionException() {
+        Reader reader = new StringReader(xml);
+        Consumer<Exception> c = (e) -> System.out.println("No input function!");
+        Future<JSONObject> future = XML.toJSONObjectMS5(reader, null, c);
+        assertNull(future);
     }
 }

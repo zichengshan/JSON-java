@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.json.junit.MileStone5Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-06T23:36:50" hostname="Chenxus-MacBook-Pro.local" time="1.01">
+<testsuite name="org.json.junit.MileStone5Test" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-03-09T06:48:32" hostname="s-MacBook-Pro.local" time="0.023">
   <properties/>
-  <testcase name="shouldThrowExecutionException" classname="org.json.junit.MileStone5Test" time="1.01"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="shouldThrowExecutionException" classname="org.json.junit.MileStone5Test" time="0.009"/>
+  <testcase name="testSuccess" classname="org.json.junit.MileStone5Test" time="0.014"/>
+  <system-out><![CDATA[No input function!
+Processing.....
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
