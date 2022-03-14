@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.json.junit.MileStone5Test" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-03-09T06:48:32" hostname="s-MacBook-Pro.local" time="0.023">
+<testsuite name="org.json.junit.MileStone5Test" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-03-14T04:56:25" hostname="Chenxus-MacBook-Pro.local" time="0.002">
   <properties/>
-  <testcase name="shouldThrowExecutionException" classname="org.json.junit.MileStone5Test" time="0.009"/>
-  <testcase name="testSuccess" classname="org.json.junit.MileStone5Test" time="0.014"/>
+  <testcase name="shouldThrowExecutionException" classname="org.json.junit.MileStone5Test" time="0.001"/>
+  <testcase name="testSuccess" classname="org.json.junit.MileStone5Test" time="0.001"/>
   <system-out><![CDATA[No input function!
 Processing.....
 ]]></system-out>

@@ -6,6 +6,7 @@
 -windowtitle 'JSON-java v20200429-SNAPSHOT API'
 '/Users/chenxuwang/Documents/GitHub/JSON-java/src/main/java/org/json/JSONException.java'
 '/Users/chenxuwang/Documents/GitHub/JSON-java/src/main/java/org/json/JSONPropertyIgnore.java'
+'/Users/chenxuwang/Documents/GitHub/JSON-java/src/main/java/org/json/Node.java'
 '/Users/chenxuwang/Documents/GitHub/JSON-java/src/main/java/org/json/JSONArray.java'
 '/Users/chenxuwang/Documents/GitHub/JSON-java/src/main/java/org/json/JSONPropertyName.java'
 '/Users/chenxuwang/Documents/GitHub/JSON-java/src/main/java/org/json/JSONStringer.java'

@@ -75,6 +75,12 @@
 <dd>
 <div class="block">Accumulate values under a key.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#addChild-org.json.Node-">addChild(Node)</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#addChild-T-">addChild(T)</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#addChildren-java.util.List-">addChildren(List&lt;Node&gt;)</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/json/XML.html#AMP">AMP</a></span> - Static variable in class org.json.<a href="org/json/XML.html" title="class in org.json">XML</a></dt>
 <dd>
 <div class="block">The Character '&amp;'.</div>
@@ -262,6 +268,10 @@
 <dd>
 <div class="block">The name of the key in a JSON Object that indicates a CDATA section.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#getChildren--">getChildren()</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#getData--">getData()</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/json/JSONArray.html#getDouble-int-">getDouble(int)</a></span> - Method in class org.json.<a href="org/json/JSONArray.html" title="class in org.json">JSONArray</a></dt>
 <dd>
 <div class="block">Get the double value associated with an index.</div>
@@ -315,6 +325,8 @@
 <dd>
 <div class="block">Get the JSONObject value associated with a key.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#getKey--">getKey()</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/json/JSONArray.html#getLong-int-">getLong(int)</a></span> - Method in class org.json.<a href="org/json/JSONArray.html" title="class in org.json">JSONArray</a></dt>
 <dd>
 <div class="block">Get the long value associated with an index.</div>
@@ -416,6 +428,8 @@
 <div class="block">When parsing the XML into JSON, specifies if values should be kept as strings (<code>true</code>), or if
  they should try to be guessed into JSON values (numeric, boolean, string)</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#isLeaf--">isLeaf()</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/json/JSONArray.html#isNull-int-">isNull(int)</a></span> - Method in class org.json.<a href="org/json/JSONArray.html" title="class in org.json">JSONArray</a></dt>
 <dd>
 <div class="block">Determine if the value is <code>null</code>.</div>
@@ -425,6 +439,8 @@
 <div class="block">Determine if the value associated with the key is <code>null</code> or if there is no
  value.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#isRoot--">isRoot()</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/json/JSONArray.html#iterator--">iterator()</a></span> - Method in class org.json.<a href="org/json/JSONArray.html" title="class in org.json">JSONArray</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -735,6 +751,12 @@
 <dd>
 <div class="block">Get the next value.</div>
 </dd>
+<dt><a href="org/json/Node.html" title="class in org.json"><span class="typeNameLink">Node</span></a>&lt;<a href="org/json/Node.html" title="type parameter in Node">T</a>&gt; - Class in <a href="org/json/package-summary.html">org.json</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#Node-T-">Node(T)</a></span> - Constructor for class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#Node-T-org.json.Node-">Node(T, Node&lt;T&gt;)</a></span> - Constructor for class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/json/XML.html#noSpace-java.lang.String-">noSpace(String)</a></span> - Static method in class org.json.<a href="org/json/XML.html" title="class in org.json">XML</a></dt>
 <dd>
 <div class="block">Throw an exception if the string contains whitespace.</div>
@@ -979,6 +1001,11 @@
 </a>
 <h2 class="title">P</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="org/json/XML.html#Parse-org.json.XMLTokener-org.json.JSONObject-java.lang.String-org.json.XMLParserConfiguration-java.util.function.Function-">Parse(XMLTokener, JSONObject, String, XMLParserConfiguration, Function&lt;String, String&gt;)</a></span> - Static method in class org.json.<a href="org/json/XML.html" title="class in org.json">XML</a></dt>
+<dd>
+<div class="block">MileStone3
+ Parse() is used to scan the content following the name tag, attaching it to the context.</div>
+</dd>
 <dt><a href="org/json/Property.html" title="class in org.json"><span class="typeNameLink">Property</span></a> - Class in <a href="org/json/package-summary.html">org.json</a></dt>
 <dd>
 <div class="block">Converts a Property file data into JSONObject and back.</div>
@@ -1177,6 +1204,8 @@
 <dd>
 <div class="block">Remove a name and its value, if present.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#removeParent--">removeParent()</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/json/CDL.html#rowToJSONArray-org.json.JSONTokener-">rowToJSONArray(JSONTokener)</a></span> - Static method in class org.json.<a href="org/json/CDL.html" title="class in org.json">CDL</a></dt>
 <dd>
 <div class="block">Produce a JSONArray of strings from a row of comma delimited values.</div>
@@ -1196,6 +1225,12 @@
 </a>
 <h2 class="title">S</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#setData-T-">setData(T)</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#setKey-java.lang.String-">setKey(String)</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#setParent-org.json.Node-">setParent(Node&lt;T&gt;)</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/json/JSONArray.html#similar-java.lang.Object-">similar(Object)</a></span> - Method in class org.json.<a href="org/json/JSONArray.html" title="class in org.json">JSONArray</a></dt>
 <dd>
 <div class="block">Determine if two JSONArrays are similar.</div>
@@ -1216,6 +1251,12 @@
 <dd>
 <div class="block">The Character '/'.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/json/JSONObject.html#spliterator--">spliterator()</a></span> - Method in class org.json.<a href="org/json/JSONObject.html" title="class in org.json">JSONObject</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#spliterator--">spliterator()</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/json/Node.html#stream--">stream()</a></span> - Method in class org.json.<a href="org/json/Node.html" title="class in org.json">Node</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/json/JSONObject.html#stringToNumber-java.lang.String-">stringToNumber(String)</a></span> - Static method in class org.json.<a href="org/json/JSONObject.html" title="class in org.json">JSONObject</a></dt>
 <dd>
 <div class="block">Converts a string to a number using the narrowest possible type.</div>
@@ -1373,6 +1414,13 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/json/XML.html#toJSONObject-java.io.Reader-org.json.JSONPointer-org.json.JSONObject-">toJSONObject(Reader, JSONPointer, JSONObject)</a></span> - Static method in class org.json.<a href="org/json/XML.html" title="class in org.json">XML</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/json/XML.html#toJSONObject-java.io.Reader-java.util.function.Function-">toJSONObject(Reader, Function&lt;String, String&gt;)</a></span> - Static method in class org.json.<a href="org/json/XML.html" title="class in org.json">XML</a></dt>
+<dd>
+<div class="block">MileStone3
+ This toJSONObject() function is for transformations of keys, fit fot new Parse() method</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/json/XML.html#toJSONObjectMS5-java.io.Reader-java.util.function.Function-java.util.function.Consumer-">toJSONObjectMS5(Reader, Function&lt;String, String&gt;, Consumer&lt;Exception&gt;)</a></span> - Static method in class org.json.<a href="org/json/XML.html" title="class in org.json">XML</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/json/JSONString.html#toJSONString--">toJSONString()</a></span> - Method in interface org.json.<a href="org/json/JSONString.html" title="interface in org.json">JSONString</a></dt>
 <dd>
 <div class="block">The <code>toJSONString</code> method allows a class to produce its own JSON
@@ -1389,6 +1437,11 @@
 <dt><span class="memberNameLink"><a href="org/json/Property.html#toProperties-org.json.JSONObject-">toProperties(JSONObject)</a></span> - Static method in class org.json.<a href="org/json/Property.html" title="class in org.json">Property</a></dt>
 <dd>
 <div class="block">Converts the JSONObject into a property file object.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/json/JSONObject.html#toStream--">toStream()</a></span> - Method in class org.json.<a href="org/json/JSONObject.html" title="class in org.json">JSONObject</a></dt>
+<dd>
+<div class="block">Reference: https://replit.com/@CristaVideira/SWE262Java
+ toStream() is used to convert a JSONObject to a JSONObject stream</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/json/CDL.html#toString-org.json.JSONArray-">toString(JSONArray)</a></span> - Static method in class org.json.<a href="org/json/CDL.html" title="class in org.json">CDL</a></dt>
 <dd>

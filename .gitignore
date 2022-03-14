@@ -6,7 +6,6 @@
 *.iml
 /target/
 .DS_Store
-
 /bin/
 .settings/
 /.gradle/
@@ -24,3 +23,5 @@
 #/build/reports/
 
 /build/tmp/
+/build/
+.DS_Store
