@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 
+// Add streaming methods to the library that allow the client code to chain operations on JSON nodes
+
 public class MileStone4Test {
     @Test
     public void streamTestPrint() {

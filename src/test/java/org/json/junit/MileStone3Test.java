@@ -8,6 +8,8 @@ import java.io.Reader;
 import java.io.StringReader;
 import static org.junit.Assert.assertEquals;
 
+// Read an XML file into a JSON object, and add the prefix "SWE262_" to all of its keys.
+// Do the transformation during the parsing of the XML file, not in another pass afterwards
 public class MileStone3Test {
     /**
      * Test1

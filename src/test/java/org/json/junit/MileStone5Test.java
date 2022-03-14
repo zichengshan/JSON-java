@@ -10,6 +10,7 @@ import java.util.concurrent.Future;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+// Add asynchronous methods to the library that allow the client code to proceed, while specifying what to do when the JSONObject becomes available.
 public class MileStone5Test {
     /**
      * Test on "Future<JSONObject> toJSONObjectMS5(Reader reader, Function<String, String> f, Consumer<Exception> c)"
